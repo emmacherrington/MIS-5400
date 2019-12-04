@@ -1,0 +1,34 @@
+<!doctype html>
+<title>Games Collection API</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+  <h1>Games Collection Documentation</h1>
+  <p>Here you will find information on using the games collection api.</p>
+    <br /> <br />
+    <h2>ADDING GAMES</h2>
+    <b>POST /api/v1/games</b> - Add some new games to our database!
+    <p>When adding games, please use this as your body to ensure uniformity in our database.</p>
+    <p>(Fill in as many fields as you can - variables show desired types of data)</p>
+    <pre>
+    {
+        "username": "String",
+        "name": "String",
+        "rating": Float,  (Fun rating, 0.0-10.0 scale)
+        "minplayers": Int,
+        "maxplayers": Int,
+        "minplaytime": Int,
+        "maxplaytime": Int,
+        "yearpublished": "String",
+        "ranking": Int,   (Game ranking overall, 1 being the highest)
+        "numberowned": Int,
+        "type": "String"
+    }
+    </pre>
+    <br /> <br />
+    <h2>GETTING GAMES</h2>
+    <b>GET /api/v1/games</b> - Get all the games from our database!<br />
+    <b>GET /api/v1/games/&lt;id&gt;</b> - Get a specific game from our database!
+    <br /> <br />
+    <h2>DELETING GAMES</h2>
+    <b>DELETE /api/v1/games/&lt;id&gt;</b> - Delete a game from our database!
+</div>

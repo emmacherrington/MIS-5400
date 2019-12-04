@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+<h3>{{ message }}</h3>
+<table class="smalltable">
+<tr><th>{{ game.name }}</th><th></th></tr>
+    <tr><td>Rating:</td><td>{{ game.rating }}</td></tr>
+    <tr><td>Owner:</td><td>{{ game.username }}</td></tr>
+    <tr><td>Minimum Players:</td><td>{{ game.minplayers }}</td></tr>
+    <tr><td>Maximum Players:</td><td>{{ game.maxplayers }}</td></tr>
+    <tr><td>Minimum Playtime:</td><td>{{ game.minplaytime }}</td></tr>
+    <tr><td>Maximum Playtime:</td><td>{{ game.maxplaytime }}</td></tr>
+    <tr><td>Year Published:</td><td>{{ game.yearpublished }}</td></tr>
+    <tr><td>BGG Ranking:</td><td>{{ game.ranking }}</td></tr>
+    <tr><td># Owned by BGG Users:</td><td>{{ game.numberowned }}</td></tr>
+</table>
+
+
+{% endblock %}

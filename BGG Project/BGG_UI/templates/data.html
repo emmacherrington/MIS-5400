@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+<h3>{{ message }}</h3>
+
+
+<h1>All The Games</h1>
+    <table style="width:100%">
+    <tr><th>Game Name</th><th>Rating</th><th>Owner</th><th>Players</th><th>Playtime (mins)</th><th></th></tr>
+    {% for game in user_games %}
+    <div>
+        <tr>
+            <td>{{ game.name }}</td>
+            <td>{{ game.rating }}</td>
+            <td>{{ game.username }}</td>
+            <td>{{ game.minplayers }} - {{ game.maxplayers }}</td>
+            <td>{{ game.minplaytime }} - {{ game.maxplaytime }}</td>
+            <td><a href="http://localhost:5555/detail/{{ game.id }}">Detail</a></td>
+        </tr>
+    </div>
+    {% endfor %}
+    </table>
+{% endblock %}
