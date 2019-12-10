@@ -4,6 +4,7 @@
 
 <h2>{{ title }}</h2>
 <h3>{{ message }}</h3>
+
 <table class="smalltable">
 <tr><th>{{ game.name }}</th><th></th></tr>
     <tr><td>Rating:</td><td>{{ game.rating }}</td></tr>
@@ -16,6 +17,19 @@
     <tr><td>BGG Ranking:</td><td>{{ game.ranking }}</td></tr>
     <tr><td># Owned by BGG Users:</td><td>{{ game.numberowned }}</td></tr>
 </table>
+<br>
+<button id="delButton">Delete Game</button>
 
+
+<script type="text/javascript">
+    document.getElementById("delButton").onclick = function () {
+
+        var r = confirm("Are you sure you want to delete this game from the database?");
+        if (r == true) {
+            window.location.href = ("http://localhost:5000/api/delete/" + {{ game.id }});
+    }
+
+}
+</script>
 
 {% endblock %}

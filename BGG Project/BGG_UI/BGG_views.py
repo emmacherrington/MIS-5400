@@ -7,7 +7,6 @@ from flask import render_template, Flask
 from BGG_UI import app
 from bson.json_util import dumps, loads
 
-
 @app.route('/')
 @app.route('/home')
 def home():
@@ -41,12 +40,12 @@ def about():
     )
 
 
-@app.route('/data')
-def data():
+@app.route('/gamecollection')
+def gamecollection():
     """Renders the data page."""
     raw_data = get_all_games()
     return render_template(
-        'data.html',
+        'gamecollection.html',
         title='All The Games',
         message='Here you can see a list of all the games. Click one to see details',
         user_games=loads(raw_data.content)
@@ -65,6 +64,33 @@ def detail(gameid):
 
     )
 
+@app.route('/add')
+def add():
+    """Renders the add page."""
+    return render_template(
+        'add.html',
+        title='Add Game',
+        message='Here you can add a game to our collections.'
+    )
+
+@app.route('/success/<string:AddDel>')
+def success(AddDel):
+    """Renders a successful insert/delete page."""
+    return render_template(
+        'success.html',
+        title='Success!',
+        message= ('The game was successfully ' + AddDel + '!')
+    )
+
+@app.route('/fail/<string:AddDel>')
+def fail(AddDel):
+    """Renders a failed insert/delete page."""
+    return render_template(
+        'fail.html',
+        title='Failure.',
+        message=('The game failed to be ' + AddDel + '. :(')
+    )
+
 def get_all_games():
     return r.get("http://localhost:5000/api/v1/games")
 
@@ -72,4 +98,7 @@ def get_one_game(game):
     url = "http://localhost:5000/api/v1/games/" + str(game)
     return r.get(url)
 
-#http://127.0.0.1:5000/api/v1/games
+
+#def delete_game(gameName, gameID):
+
+

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+<h3>{{ message }}</h3>
+
+    <form action="http://localhost:5000/api/v1/games" method="post" enctype="multipart/form-data">
+        <fieldset>
+        <legend>Game Information:</legend>
+        Owner Username:
+        <select id="usernames" name="username">
+            <option value="ebnoob">ebnoob</option>
+            <option value="Shawninator">Shawninator</option>
+            <option value="torisnow">torisnow</option>
+        </select><br><br>
+        Game Name:
+        <input type="text" name="name"><br><br>
+        Game Rating (0.0 - 10.0 scale):
+        <input type="number" name="rating" min="0.0" max="10.0"><br><br>
+        Minimum Players:
+        <input type="number" name="minplayers" min="1"><br><br>
+        Maximum Players:
+        <input type="number" name="maxplayers" max="999"><br><br>
+        Minimum Playtime (minutes):
+        <input type="number" name="minplaytime" min="1"><br><br>
+        Maximum Playtime (minutes):
+        <input type="number" name="maxplaytime" max="360"><br><br>
+        Year Published (XXXX format):
+        <input type="String" name="yearpublished"><br><br>
+        Ranking (1 being the highest):
+        <input type="number" name="ranking" min="1"><br><br>
+        Number Owned (by BGG users):
+        <input type="number" name="numberowned" min="1"><br><br>
+        <input type="string" name="type" value="boardgame" style="visibility: hidden">
+        <input type="submit" value="Submit">
+    </fieldset>
+    </form>
+{% endblock %}
